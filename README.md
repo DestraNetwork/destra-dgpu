@@ -114,7 +114,8 @@ source dgpu-env/bin/activate
 Install the `destra-dgpu` package from the provided wheel file.
 
 ```sh
-pip install destra_dgpu-0.1.0-cp39-cp39-linux_x86_64.whl
+cd ~/destra-dgpu
+pip install destra-dgpu/destra_dgpu-0.1.0-cp39-cp39-linux_x86_64.whl
 ```
 
 ### 6. Set Environment Variables
