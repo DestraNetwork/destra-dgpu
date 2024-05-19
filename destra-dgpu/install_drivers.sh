@@ -54,30 +54,6 @@ if ! check_gpu lspci && ! check_gpu lshw; then
     exit 0
 fi
 
-# AMD GPU Check
-if check_gpu lspci amdgpu || check_gpu lshw amdgpu; then
-    # Look for pre-existing ROCm v6 before downloading the dependencies
-    for search in "${HIP_PATH:-''}" "${ROCM_PATH:-''}" "/opt/rocm"; do
-        if [ -n "${search}" ] && [ -e "${search}/lib/libhipblas.so.2" ]; then
-            status "Compatible AMD GPU ROCm library detected at ${search}"
-            install_success
-            exit 0
-        fi
-    done
-
-    status "Downloading AMD GPU dependencies..."
-    curl --fail --show-error --location --progress-bar -o /tmp/ "https://example.com/path/to/rocm-dependencies.tgz" \
-        | sudo tar zx -C /tmp/rocm .
-
-    status "Installing AMD GPU dependencies to /opt/rocm..."
-    sudo install -o0 -g0 -m755 -d /opt/rocm
-    sudo cp -r /tmp/rocm/* /opt/rocm/
-
-    install_success
-    status "AMD GPU dependencies installed."
-    exit 0
-fi
-
 # CUDA Driver Installation for RHEL/CentOS/Fedora
 install_cuda_driver_yum() {
     status 'Installing NVIDIA repository...'
