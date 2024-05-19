@@ -15,6 +15,8 @@ This library is designed to handle all things related to Destra GPU Worker Node,
 - Ubuntu system
 - NVidia GPU
 - Stable internet connection
+- Sepolia RPC
+- Wallet with 0.2 Sepolia ETH
 
 
 ## Setup Instructions
