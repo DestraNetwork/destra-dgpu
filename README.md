@@ -15,6 +15,8 @@ This library is designed to handle all things related to Destra GPU Worker Node,
 - Ubuntu system
 - NVidia GPU
 - Stable internet connection
+- Sepolia RPC
+- Wallet with 0.2 Sepolia ETH
 
 
 ## Setup Instructions
@@ -125,21 +127,42 @@ export NODE_OPERATOR_PRIVATE_KEY=YourPrivateKeyHere
 
 ### 7. Start the GPU Worker Node
 
-Start the GPU worker node by running the following command. Replace `<destra_gpu_registry_contract_address>` and `<rpc_url>` with the appropriate values.
+It is recommended to use `tmux` to manage the session and keep the GPU worker node running in the background.
 
-```sh
-destra-gpu-start-worker <destra_gpu_registry_contract_address> <rpc_url>
-```
+1. **Install `tmux`**:
 
-Example:
+    ```sh
+    sudo apt-get install tmux
+    ```
 
-```sh
-destra-gpu-start-worker 0x9B1B198C5C671F8B5a67721cC4Fff5E9F020D505 https://sepolia.infura.io/v3/<YOUR_INFURA_KEY>
-```
+2. **Start a new `tmux` session**:
 
+    ```sh
+    tmux new -s destra-gpu
+    ```
+
+3. **Start the GPU worker node**. Replace `<destra_gpu_registry_contract_address>` and `<rpc_url>` with the appropriate values.
+
+    ```sh
+    destra-gpu-start-worker <destra_gpu_registry_contract_address> <rpc_url>
+    ```
+
+    Example:
+
+    ```sh
+    destra-gpu-start-worker 0x9B1B198C5C671F8B5a67721cC4Fff5E9F020D505 https://sepolia.infura.io/v3/<YOUR_INFURA_KEY>
+    ```
+
+4. **Detach from the `tmux` session** by pressing `Ctrl+b`, then `d`. This will keep the session running in the background.
+
+    To reattach to the session later, use:
+
+    ```sh
+    tmux attach -t destra-gpu
+    ```
 ### 8. Stop the GPU Worker Node
 
-To stop the GPU worker node, run the following command:
+To stop the GPU worker node, run the following command from anywhere:
 
 ```sh
 destra-gpu-stop-worker
