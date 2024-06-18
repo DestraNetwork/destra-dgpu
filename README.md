@@ -15,8 +15,9 @@ This library is designed to handle all things related to Destra GPU Worker Node,
 - Ubuntu system
 - NVidia GPU
 - Stable internet connection
+- Access to network firewall settings
 - Sepolia RPC
-- Wallet with 0.2 Sepolia ETH
+- Wallet with 0.1 Sepolia ETH
 
 
 ## Setup Instructions
@@ -120,7 +121,7 @@ pip install destra-dgpu/destra_dgpu-0.1.0-cp39-cp39-linux_x86_64.whl
 
 ### 6. Set Environment Variables
 
-Set the environment variable `NODE_OPERATOR_PRIVATE_KEY` with your private key. Replace `YourPrivateKeyHere` with your actual private key (without the `0x` prefix). Ensure atleast 0.2 Sepolia ETH.
+Set the environment variable `NODE_OPERATOR_PRIVATE_KEY` with your private key. Replace `YourPrivateKeyHere` with your actual private key (without the `0x` prefix). Ensure atleast 0.1 Sepolia ETH.
 
 ```sh
 export NODE_OPERATOR_PRIVATE_KEY=YourPrivateKeyHere
@@ -142,10 +143,10 @@ It is recommended to use `tmux` to manage the session and keep the GPU worker no
     tmux new -s destra-gpu
     ```
 
-3. **Start the GPU worker node**. Replace `<destra_gpu_registry_contract_address>` and `<rpc_url>` with the appropriate values.
+3. **Start the GPU worker node**. Replace `<destra_gpu_registry_contract_address>` and `<sepolia_rpc_endpoint>` with the appropriate values.
 
     ```sh
-    destra-gpu-start-worker <destra_gpu_registry_contract_address> <rpc_url>
+    destra-gpu-start-worker <destra_gpu_registry_contract_address> <sepolia_rpc_endpoint>
     ```
 
     Example:
